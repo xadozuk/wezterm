@@ -12,9 +12,13 @@ require("styles").apply(config, {
 	dynamic_background = true,
 })
 
-config.default_domain = "WSL:Ubuntu"
-config.front_end = "WebGpu"
+require("plugins").apply(config)
 
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+	require("overrides.windows").apply(config)
+end
+
+config.front_end = "WebGpu"
 config.default_prog = {
 	"pwsh",
 }

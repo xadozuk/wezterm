@@ -56,11 +56,11 @@ function module.apply(config, override_opts)
 
 	config.font = wezterm.font("CaskaydiaCove Nerd Font")
 	config.color_scheme = "Campbell (Gogh)"
-	config.window_background_opacity = 0.9
+	-- config.window_background_opacity = 0.9
 
 	config.use_fancy_tab_bar = false
 	config.hide_tab_bar_if_only_one_tab = true
-	-- config.tab_bar_at_bottom = true
+	config.tab_bar_at_bottom = true
 
 	config.background = {
 		{
