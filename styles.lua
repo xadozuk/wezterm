@@ -4,6 +4,16 @@ local wezterm = require("wezterm")
 
 local TerminalBackgrounds = {}
 
+local function join_path(path, child)
+	local last_char = string.sub(path, -1)
+
+	if last_char ~= "/" and last_char ~= "\\" then
+		path = path .. "/"
+	end
+
+	return path .. child
+end
+
 local function fetch_terminal_backgrounds(path)
 	if #TerminalBackgrounds > 0 then
 		return TerminalBackgrounds
@@ -11,7 +21,7 @@ local function fetch_terminal_backgrounds(path)
 
 	local backgrounds = {}
 
-	for _, file in ipairs(wezterm.glob(path .. "*.png")) do
+	for _, file in ipairs(wezterm.glob(join_path(path, "*.png"))) do
 		table.insert(backgrounds, file)
 	end
 
