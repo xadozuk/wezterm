@@ -14,13 +14,18 @@ require("styles").apply(config, {
 
 require("plugins").apply(config)
 
-if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-	require("overrides.windows").apply(config)
-end
-
 config.front_end = "WebGpu"
 config.default_prog = {
 	"pwsh",
 }
+
+print("Target triple: " .. wezterm.target_triple)
+
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+	require("overrides.windows").apply(config)
+end
+if wezterm.target_triple == "aarch64-apple-darwin" then
+	require("overrides.mac").apply(config)
+end
 
 return config
